@@ -1,6 +1,5 @@
 package com.leadersofdigital.ecocontrol.entity;
 
-import java.io.File;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import javax.persistence.CascadeType;
@@ -9,11 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
-import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,7 +26,7 @@ public class Mark implements Serializable {
   private static final long serialVersionUID = 4099836772284228713L;
 
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id", nullable = false)
   private Long id;
 
@@ -39,7 +36,7 @@ public class Mark implements Serializable {
   private String description;
 
   @ManyToOne(cascade = {CascadeType.ALL})
-  private AppUser user;
+  private User user;
 
   @Lob
   private Byte[] img;
