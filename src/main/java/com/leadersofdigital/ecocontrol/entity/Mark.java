@@ -1,26 +1,23 @@
 package com.leadersofdigital.ecocontrol.entity;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
-import javax.persistence.PrePersist;
+import javax.persistence.*;
+
+import com.leadersofdigital.ecocontrol.api.dto.request.MarkDtoRequest;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.extern.java.Log;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Log
 public class Mark implements Serializable {
 
   private static final long serialVersionUID = 4099836772284228713L;
@@ -39,7 +36,10 @@ public class Mark implements Serializable {
   private User user;
 
   @Lob
-  private Byte[] img;
+  private byte[] img;
+
+  @Enumerated(EnumType.STRING)
+  private PollutionType pollutionType;
 
   @Column(nullable = false)
   private LocalDateTime createdAt;
@@ -47,6 +47,18 @@ public class Mark implements Serializable {
   @PrePersist
   public void fillCreatedTime() {
     createdAt = LocalDateTime.now();
+  }
+
+  public Mark(MarkDtoRequest dtoRequest) {
+    this.location = new Location(dtoRequest.getLatitude(), dtoRequest.getLongitude());
+    this.pollutionType=dtoRequest.getPollutionType();
+    this.description= dtoRequest.getDescription();
+
+    try {
+      this.img = dtoRequest.getImage().getBytes();
+    } catch (Exception e) {
+      log.warning(e.getMessage());
+    }
   }
 
 }
