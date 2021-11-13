@@ -2,6 +2,7 @@ package com.leadersofdigital.ecocontrol.entity;
 
 import lombok.Data;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -15,9 +16,15 @@ public class Okved {
     @GeneratedValue
     private UUID id;
 
-    @NotNull
+    @Column(nullable = false)
     private String value;
 
-    @NotNull
+    @Column(nullable = false)
     private Integer nvos; //НВОС
+
+    private String description;
+
+    @Column(nullable = false)
+    private Boolean isDanger;
+
 }

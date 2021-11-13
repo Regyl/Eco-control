@@ -27,8 +27,6 @@ public class OrganizationDtoResponse {
 
     private Set<Okved> okveds;
 
-    private Boolean isOkvedDanger;
-
     private String address;
 
     private PollutionType pollutionType;

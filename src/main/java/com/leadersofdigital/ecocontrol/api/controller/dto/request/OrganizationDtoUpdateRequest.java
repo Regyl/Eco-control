@@ -1,7 +1,6 @@
 package com.leadersofdigital.ecocontrol.api.controller.dto.request;
 
 import com.leadersofdigital.ecocontrol.entity.Location;
-import com.leadersofdigital.ecocontrol.entity.Penalty;
 import com.leadersofdigital.ecocontrol.entity.enums.OrganizationType;
 import lombok.Data;
 
@@ -25,7 +24,7 @@ public class OrganizationDtoUpdateRequest {
 
     private OrganizationType organizationType;
 
-    private Set<OkvedDtoRequest> okveds;
+    private Set<OkvedDtoCreateRequest> okveds;
 
     private String address;
 }

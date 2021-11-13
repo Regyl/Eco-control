@@ -50,8 +50,5 @@ public class Organization {
   private Set<Okved> okveds;
 
   @Column(nullable = false)
-  private Boolean isOkvedDanger;
-
-  @Column(nullable = false)
   private String address;
 }
