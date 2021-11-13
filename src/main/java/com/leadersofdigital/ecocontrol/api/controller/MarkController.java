@@ -1,7 +1,7 @@
 package com.leadersofdigital.ecocontrol.api.controller;
 
-import com.leadersofdigital.ecocontrol.api.dto.request.MarkDtoRequest;
-import com.leadersofdigital.ecocontrol.api.dto.response.MarkDtoResponse;
+import com.leadersofdigital.ecocontrol.api.controller.dto.request.MarkDtoRequest;
+import com.leadersofdigital.ecocontrol.api.controller.dto.response.MarkDtoResponse;
 import com.leadersofdigital.ecocontrol.service.MarkService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;

@@ -1,6 +1,6 @@
 package com.leadersofdigital.ecocontrol.service;
 
-import com.leadersofdigital.ecocontrol.api.dto.request.MarkDtoRequest;
+import com.leadersofdigital.ecocontrol.api.controller.dto.request.MarkDtoRequest;
 import com.leadersofdigital.ecocontrol.entity.Mark;
 import com.leadersofdigital.ecocontrol.repository.MarkRepository;
 import org.springframework.stereotype.Service;

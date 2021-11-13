@@ -1,5 +1,6 @@
 package com.leadersofdigital.ecocontrol.entity;
 
+import com.leadersofdigital.ecocontrol.api.controller.dto.request.OrganizationDtoCreateRequest;
 import com.leadersofdigital.ecocontrol.entity.enums.OrganizationType;
 import lombok.Data;
 
