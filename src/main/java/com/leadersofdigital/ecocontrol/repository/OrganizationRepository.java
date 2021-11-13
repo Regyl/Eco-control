@@ -21,4 +21,6 @@ public interface OrganizationRepository extends JpaRepository<Organization, UUID
     Optional<Organization> findByAddressContains(String address);
 
     Optional<Organization> findByPenalty(Penalty penalty);
+
+    List<Organization> findAllByPenaltyIsNotNull();
 }

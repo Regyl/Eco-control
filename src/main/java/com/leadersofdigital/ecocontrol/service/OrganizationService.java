@@ -27,6 +27,10 @@ public class OrganizationService {
         this.penaltyRepository = penaltyRepository;
     }
 
+    public List<Organization> findAllWithPenalty() {
+        return repository.findAllByPenaltyIsNotNull();
+    }
+
     public void saveAll(Iterable<Organization> organizations) {
         repository.saveAll(organizations);
     }
