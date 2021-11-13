@@ -23,7 +23,7 @@ public class OrganizationDtoCreateRequest {
     @NotNull
     private OrganizationType organizationType;
 
-    private Set<OkvedDtoRequest> okveds;
+    private Set<OkvedDtoCreateRequest> okveds;
 
     private String address;
 
