@@ -31,7 +31,7 @@ public class OrganizationService {
         return repository.findAll(pageable);
     }
 
-    public Organization findById(UUID id) {
+    public Organization findById(Long id) {
         return repository.findById(id)
                 .orElseThrow(EntityNotFoundException::new);
     }
