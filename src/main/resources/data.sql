@@ -128,6 +128,15 @@ INSERT INTO mark VALUES (uuid_generate_v4(), '2021-08-09 13:57:40', null, null, 
 INSERT INTO mark VALUES (uuid_generate_v4(), '2021-08-09 13:57:40', null, null, 55.168472, 61.440826, 'SOIL', null);
 INSERT INTO mark VALUES (uuid_generate_v4(), '2021-08-09 13:57:40', null, null, 55.168472, 61.441974, 'SOIL', null);
 INSERT INTO mark VALUES (uuid_generate_v4(), '2021-08-09 13:57:40', null, null, 55.168362, 61.437060, 'SOIL', null);
+INSERT INTO mark VALUES (uuid_generate_v4(), '2021-08-09 13:57:40', null, null, 55.169423, 61.298596, 'AIR', null);
+INSERT INTO mark VALUES (uuid_generate_v4(), '2021-08-09 13:57:40', null, null, 55.171237, 61.296676, 'AIR', null);
+INSERT INTO mark VALUES (uuid_generate_v4(), '2021-08-09 13:57:40', null, null, 55.171905, 61.300453, 'AIR', null);
+INSERT INTO mark VALUES (uuid_generate_v4(), '2021-08-09 13:57:40', null, null, 55.171206, 61.295979, 'AIR', null);
+INSERT INTO mark VALUES (uuid_generate_v4(), '2021-08-09 13:57:40', null, null, 55.167109, 61.394174, 'WATER', null);
+INSERT INTO mark VALUES (uuid_generate_v4(), '2021-08-09 13:57:40', null, null, 55.169094, 61.405697, 'WATER', null);
+INSERT INTO mark VALUES (uuid_generate_v4(), '2021-08-09 13:57:40', null, null, 55.169104, 61.406886, 'WATER', null);
+INSERT INTO mark VALUES (uuid_generate_v4(), '2021-08-09 13:57:40', null, null, 55.169340, 61.408166, 'WATER', null);
+INSERT INTO mark VALUES (uuid_generate_v4(), '2021-08-09 13:57:40', null, null, 55.169885, 61.408209, 'WATER', null);
 
 
 ------------- Penalty ---------------------
