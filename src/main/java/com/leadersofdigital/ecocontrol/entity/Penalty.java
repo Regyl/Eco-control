@@ -24,5 +24,6 @@ public class Penalty {
   @Column(nullable = false)
   private LocalDate date;
 
+  @Column(nullable = false, unique = true)
   private String uin; //УИН штрафа
 }
