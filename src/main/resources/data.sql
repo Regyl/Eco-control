@@ -1,0 +1,2 @@
+INSERT INTO organization(inn, name, latitude, longitude, organization_type, okved, work_type, address)
+VALUES (7450053485, 'ООО «Тепловые электрические сети и системы»', 55.240051, 61.411240, 'LICENSED', null, null, 'г. Челябинск, ул. Елькина, 88-б');

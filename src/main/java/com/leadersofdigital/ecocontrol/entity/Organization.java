@@ -1,42 +1,59 @@
 package com.leadersofdigital.ecocontrol.entity;
 
 import com.leadersofdigital.ecocontrol.entity.enums.OrganizationType;
-import lombok.Data;
-
-import javax.persistence.*;
+import java.util.Set;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import java.util.Set;
-import java.util.UUID;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Organization {
-    @Id
-    @GeneratedValue
-    private UUID id;
 
-    @NotNull
-    private Long inn;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "id", nullable = false)
+  private Long id;
 
-    @NotEmpty
-    private String name;
+  @NotNull
+  @Column(nullable = false)
+  private Long inn;
 
-    @NotNull
-    @Column
-    private Location location;
+  @NotEmpty
+  @Column(nullable = false)
+  private String name;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "organization_id")
-    private Set<Penalty> penaltySet;
+  @Column(nullable = false)
+  private Location location;
 
-    @NotNull
-    @Enumerated(EnumType.STRING)
-    private OrganizationType organizationType;
+  @OneToMany(cascade = CascadeType.ALL)
+  @JoinColumn(name = "organization_id")
+  private Set<Penalty> penaltySet;
 
-    private String okved;
+  @Column(nullable = false)
+  @Enumerated(EnumType.STRING)
+  private OrganizationType organizationType;
 
-    private String workType;
+  private String okved;
 
-    private String address;
+  private String workType;
+
+  @Column(nullable = false)
+  private String address;
 }
