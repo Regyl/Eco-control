@@ -34,6 +34,14 @@ public class OrganizationController {
         this.mapper = mapper;
     }
 
+    @GetMapping("/penalty")
+    @Operation(summary = "")
+    public List<OrganizationDtoResponse> findAllWithPenalty() {
+        return service.findAllWithPenalty().stream()
+                .map(mapper::toDto)
+                .collect(Collectors.toList());
+    }
+
     @GetMapping("/search")
     @Operation(summary = "Organization by it's inn/address/penalty UIN")
     public OrganizationDtoResponse findAllSorted(@RequestParam(name = "inn", required = false) Long inn,
