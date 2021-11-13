@@ -44,7 +44,7 @@ Frontend:
 
 
 #### Команда:
-- Alexey Rodionov [tg](http://t.me/vozmojnosti_rosta) 
+- Алексей Родионов [tg](http://t.me/vozmojnosti_rosta) 
   - Тимлид, питчер
 - Игорь Пешков [tg](http://t.me/IgroGood)
     - Frontend
