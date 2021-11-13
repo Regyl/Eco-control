@@ -32,7 +32,7 @@ public class OrganizationController {
     @Operation(summary = "Returns all organizations")
     public List<OrganizationDtoResponse> findAll() {
         return service.findAll().stream()
-                .map(OrganizationDtoResponse::of)
+                .map(mapper::toDto)
                 .collect(Collectors.toList());
     }
 
@@ -41,7 +41,7 @@ public class OrganizationController {
     public List<OrganizationDtoResponse> findAllWithPagination(@RequestParam("start") int start,
                                                                @RequestParam("size") int size) {
         return service.findAll(PageRequest.of(start, size)).stream()
-                .map(OrganizationDtoResponse::of)
+                .map(mapper::toDto)
                 .collect(Collectors.toList());
     }
 
@@ -49,7 +49,7 @@ public class OrganizationController {
     @Operation(summary = "Create new organization")
     @ResponseStatus(HttpStatus.CREATED)
     public OrganizationDtoResponse create(@RequestBody OrganizationDtoCreateRequest createRequest) {
-        return OrganizationDtoResponse.of(
+        return mapper.toDto(
                 service.create(
                         mapper.toEntity(createRequest)));
     }
@@ -59,6 +59,6 @@ public class OrganizationController {
     public OrganizationDtoResponse update(@RequestBody OrganizationDtoUpdateRequest updateRequest) {
         Organization organization = service.findById(updateRequest.getId());
         mapper.toEntity(updateRequest, organization);
-        return OrganizationDtoResponse.of(service.create(organization));
+        return mapper.toDto(service.create(organization));
     }
 }
