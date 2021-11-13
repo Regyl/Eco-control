@@ -23,7 +23,7 @@ public class Organization {
   @Column(name = "id", nullable = false)
   private Long id;
 
-  @Column(nullable = false)
+  @Column(nullable = false, unique = true)
   private Long inn;
 
   @NotEmpty

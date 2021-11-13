@@ -6,10 +6,12 @@ import com.leadersofdigital.ecocontrol.api.controller.dto.response.OrganizationD
 import com.leadersofdigital.ecocontrol.api.mapper.OrganizationMapper;
 import com.leadersofdigital.ecocontrol.entity.Organization;
 import com.leadersofdigital.ecocontrol.entity.enums.PollutionType;
+import com.leadersofdigital.ecocontrol.exception.InvalidRequestException;
 import com.leadersofdigital.ecocontrol.service.OrganizationService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.extern.java.Log;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -29,6 +31,22 @@ public class OrganizationController {
     public OrganizationController(OrganizationService service, OrganizationMapper mapper) {
         this.service = service;
         this.mapper = mapper;
+    }
+
+    @GetMapping("/search")
+    @Operation(summary = "Organization by it's inn/address/penalty UIN")
+    public OrganizationDtoResponse findAllSorted(@RequestParam(name = "inn", required = false) Long inn,
+                                                       @RequestParam(name = "uin", required = false) String uin,
+                                                       @RequestParam(name = "address", required = false) String address) {
+        if(inn != null) {
+            return mapper.toDto(service.findByInn(inn));
+        } else if (address != null) {
+            return mapper.toDto(service.findByAddress(address));
+        } else if (uin != null) {
+            return mapper.toDto(service.findByUin(uin));
+        } else {
+            throw new InvalidRequestException();
+        }
     }
 
     @GetMapping("/all")
