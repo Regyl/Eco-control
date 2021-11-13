@@ -1,6 +1,8 @@
 package com.leadersofdigital.ecocontrol.parser;
 
 import com.leadersofdigital.ecocontrol.entity.Organization;
+import com.leadersofdigital.ecocontrol.repository.OrganizationRepository;
+import com.leadersofdigital.ecocontrol.service.OrganizationService;
 import lombok.extern.java.Log;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.ss.usermodel.*;
@@ -17,6 +19,8 @@ public class CustomParser {
     private static final String SECOND_LICENSE_FILE = "src/main/resources/data/Реестр лицензий на обращение с отходами 1.xls";
     private static final String THIRD_LICENSE_FILE = "src/main/resources/data/Реестр лицензий на обращение с отходами 2.xls";
     private static final String FOUR_LICENSE_FILE = "src/main/resources/data/Реестр разрешений на выбросы загрязняющих веществ -Минэкология.xlsx";
+
+    private final OrganizationService organizationService;
 
     private static Cell getCell(Row row, int column) {
         return row.getCell(column, Row.MissingCellPolicy.CREATE_NULL_AS_BLANK);
@@ -36,6 +40,10 @@ public class CustomParser {
             return inn.substring(0, inn.indexOf('\n'));
         }
         return inn;
+    }
+
+    public CustomParser(OrganizationService organizationService) {
+        this.organizationService = organizationService;
     }
 
     //Main method
@@ -79,7 +87,7 @@ public class CustomParser {
 
                 licenseList.add(license);
             }
-//            service.saveAll(licenseList);
+            organizationService.saveAll(licenseList);
         } catch (IOException e) {
             log.warning(e.getMessage());
         }

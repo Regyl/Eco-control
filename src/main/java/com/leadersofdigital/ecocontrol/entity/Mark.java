@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import javax.persistence.*;
 
-import com.leadersofdigital.ecocontrol.api.dto.request.MarkDtoRequest;
+import com.leadersofdigital.ecocontrol.api.controller.dto.request.MarkDtoRequest;
 import com.leadersofdigital.ecocontrol.entity.enums.PollutionType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

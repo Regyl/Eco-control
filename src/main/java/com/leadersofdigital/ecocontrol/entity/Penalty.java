@@ -1,5 +1,6 @@
 package com.leadersofdigital.ecocontrol.entity;
 
+import java.time.LocalDate;
 import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,4 +23,9 @@ public class Penalty {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id", nullable = false)
   private Long id;
+
+  @Column(nullable = false)
+  private LocalDate date;
+
+  private String uin; //УИН штрафа
 }

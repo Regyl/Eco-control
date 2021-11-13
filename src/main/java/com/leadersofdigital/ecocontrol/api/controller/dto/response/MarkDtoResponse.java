@@ -1,4 +1,4 @@
-package com.leadersofdigital.ecocontrol.api.dto.response;
+package com.leadersofdigital.ecocontrol.api.controller.dto.response;
 
 import com.leadersofdigital.ecocontrol.entity.Location;
 import com.leadersofdigital.ecocontrol.entity.Mark;

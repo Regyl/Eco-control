@@ -1,4 +1,4 @@
-package com.leadersofdigital.ecocontrol.api.dto.request;
+package com.leadersofdigital.ecocontrol.api.controller.dto.request;
 
 import com.leadersofdigital.ecocontrol.entity.enums.PollutionType;
 import lombok.Data;
