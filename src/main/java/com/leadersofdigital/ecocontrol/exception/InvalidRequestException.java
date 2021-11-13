@@ -1,2 +1,4 @@
-package com.leadersofdigital.ecocontrol.exception;public class InvalidRequestException {
+package com.leadersofdigital.ecocontrol.exception;
+
+public class InvalidRequestException extends RuntimeException {
 }

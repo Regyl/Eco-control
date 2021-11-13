@@ -37,7 +37,7 @@ VALUES (7, 7703406825, 'ООО  «Региональная сеть предпр
 
 INSERT INTO organization(id, inn, name, latitude, longitude, organization_type, is_okved_danger,
                          address, pollution_type)
-VALUES (8, 7448071039, 'ООО «Альтернативная жилищная компания - М»', 55.141629, 61.374877, 'LEGAL_ORGANIZATION',
+VALUES (8, 7848071039, 'ООО «Альтернативная жилищная компания - М»', 55.141629, 61.374877, 'LEGAL_ORGANIZATION',
         false, 'г. Челябинск, ул. Воровского, дом 62', null);
 
 INSERT INTO organization(id, inn, name, latitude, longitude, organization_type, is_okved_danger,
@@ -62,7 +62,7 @@ VALUES (12, 7453148664, 'Управление делами Правительс�
 
 INSERT INTO organization(id, inn, name, latitude, longitude, organization_type, is_okved_danger,
                          address, pollution_type)
-VALUES (13, 7703406825, 'ООО  «Региональная сеть предприятий питания»', 55.164176, 61.401044,
+VALUES (13, 7701406825, 'ООО  «Региональная сеть предприятий питания»', 55.164176, 61.401044,
         'LICENSED', true, 'г. Челябинск, ул. Кирова, д.161Б', 'AIR');
 
 INSERT INTO organization(id, inn, name, latitude, longitude, organization_type, is_okved_danger,
@@ -72,7 +72,7 @@ VALUES (14, 7453006148, 'ОАО «Челябинский часовой заво
 
 INSERT INTO organization(id, inn, name, latitude, longitude, organization_type, is_okved_danger,
                          address, pollution_type)
-VALUES (15, 7447118990, 'ООО «Модус»', 55.175493, 61.385872, 'LICENSED', true,
+VALUES (15, 7047118990, 'ООО «Модус»', 55.175493, 61.385872, 'LICENSED', true,
         'г. Челябинск, Свердловский проспект, 32', 'SOIL');
 
 INSERT INTO organization(id, inn, name, latitude, longitude, organization_type, is_okved_danger,
@@ -82,22 +82,22 @@ VALUES (16, 7453022326, 'МУП Дворец спорта «ЮНОСТЬ»', 55.
 
 INSERT INTO organization(id, inn, name, latitude, longitude, organization_type, is_okved_danger,
                          address, pollution_type)
-VALUES (17, 7447153747, 'ООО «Теплоснабжающая организация»', 55.182382, 61.343112, 'LICENSED',
+VALUES (17, 7947153747, 'ООО «Теплоснабжающая организация»', 55.182382, 61.343112, 'LICENSED',
         true, 'г. Челябинск, ул. Ижевская, д. 105', 'AIR');
 
 INSERT INTO organization(id, inn, name, latitude, longitude, organization_type, is_okved_danger,
                          address, pollution_type)
-VALUES (18, 7447245282, 'ООО «Грэкс»', 55.184099, 61.297289, 'LICENSED', false,
+VALUES (18, 7247245282, 'ООО «Грэкс»', 55.184099, 61.297289, 'LICENSED', false,
         'г. Челябинск, проспект Победы 319', 'SOIL');
 
 INSERT INTO organization(id, inn, name, latitude, longitude, organization_type, is_okved_danger,
                          address, pollution_type)
-VALUES (19, 7447245282, 'ООО "Уралпротект"', 55.182336, 61.344123, 'POTENTIAL_DANGER', true,
+VALUES (19, 7147245282, 'ООО "Уралпротект"', 55.182336, 61.344123, 'POTENTIAL_DANGER', true,
         'г. Челябинск, проспект Победы 319', 'SOIL');
 
 INSERT INTO organization(id, inn, name, latitude, longitude, organization_type, is_okved_danger,
                          address, pollution_type)
-VALUES (20, 7447245282, 'Уральская Химическая Компания', 55.177218, 61.355918, 'LEGAL_ORGANIZATION', false,
+VALUES (20, 7547245282, 'Уральская Химическая Компания', 55.177218, 61.355918, 'LEGAL_ORGANIZATION', false,
         'ул. Чайковского, 185, Челябинск, Челябинская обл.', null);
 
 

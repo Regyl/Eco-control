@@ -1,6 +1,7 @@
 package com.leadersofdigital.ecocontrol.api.config;
 
 import com.leadersofdigital.ecocontrol.exception.EntityNotFoundException;
+import com.leadersofdigital.ecocontrol.exception.InvalidRequestException;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -20,6 +21,16 @@ public class GlobalExceptionHandler {
     public Map<String, Object> handleEntityNotFoundException(EntityNotFoundException e) {
         Map<String, Object> body = new HashMap<>(2);
         body.put("message", "Request entity not found");
+        body.put("timestamp", LocalDateTime.now());
+        return body;
+    }
+
+    @ApiResponse(responseCode = "400", description = "No parameters had been set in query")
+    @ExceptionHandler(InvalidRequestException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public Map<String, Object> handleInvalidRequestException(InvalidRequestException e) {
+        Map<String, Object> body = new HashMap<>(2);
+        body.put("message", "No parameters had been set in query");
         body.put("timestamp", LocalDateTime.now());
         return body;
     }
