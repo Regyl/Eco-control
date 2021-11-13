@@ -1,15 +1,15 @@
 package com.leadersofdigital.ecocontrol.entity;
 
-import com.leadersofdigital.ecocontrol.api.controller.dto.request.OrganizationDtoCreateRequest;
 import com.leadersofdigital.ecocontrol.entity.enums.OrganizationType;
-import java.util.Set;
-import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import com.leadersofdigital.ecocontrol.entity.enums.PollutionType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -23,7 +23,6 @@ public class Organization {
   @Column(name = "id", nullable = false)
   private Long id;
 
-  @NotNull
   @Column(nullable = false)
   private Long inn;
 
@@ -36,17 +35,21 @@ public class Organization {
 
   @OneToMany(cascade = CascadeType.ALL)
   @JoinColumn(name = "organization_id")
-  private Set<Penalty> penaltySet;
+  private Set<Penalty> penalty;
 
   @Column(nullable = false)
   @Enumerated(EnumType.STRING)
   private OrganizationType organizationType;
 
+  @Enumerated(EnumType.STRING)
+  private PollutionType pollutionType;
+
   @ManyToMany
   @JoinColumn
   private Set<Okved> okveds;
 
-  private String workType;
+  @Column(nullable = false)
+  private Boolean isOkvedDanger;
 
   @Column(nullable = false)
   private String address;

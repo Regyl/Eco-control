@@ -17,12 +17,8 @@
 ### Основной стек технологий:
 
 - Git, Docker
-
-- Backend:
-  - Java 11, Spring Boot, PostgreSQL
-
-- Frontend:
-  - Idk
+- Java 11, Spring Boot, PostgreSQL
+  
 
 
 ## Среда запуска
@@ -39,8 +35,6 @@ Backend:
 
     docker-compose up
 
-
-Frontend:
 
 
 #### Команда:

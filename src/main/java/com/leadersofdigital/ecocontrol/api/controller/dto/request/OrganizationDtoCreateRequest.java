@@ -1,11 +1,9 @@
 package com.leadersofdigital.ecocontrol.api.controller.dto.request;
 
 import com.leadersofdigital.ecocontrol.entity.Location;
-import com.leadersofdigital.ecocontrol.entity.Penalty;
 import com.leadersofdigital.ecocontrol.entity.enums.OrganizationType;
 import lombok.Data;
 
-import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.Set;
@@ -25,9 +23,9 @@ public class OrganizationDtoCreateRequest {
     @NotNull
     private OrganizationType organizationType;
 
-    private String okved;
-
-    private String workType;
+    private Set<OkvedDtoRequest> okveds;
 
     private String address;
+
+    private Set<PenaltyDtoRequest> penalty;
 }

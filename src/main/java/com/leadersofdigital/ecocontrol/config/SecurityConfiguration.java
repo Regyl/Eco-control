@@ -1,7 +1,6 @@
 package com.leadersofdigital.ecocontrol.config;
 
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
@@ -13,11 +12,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter implemen
     @Override
     public void configure(WebSecurity webSecurity) throws Exception {
         webSecurity.ignoring().antMatchers("/**");
-    }
-
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.cors();
     }
 
     @Override
