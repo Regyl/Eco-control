@@ -89,6 +89,10 @@ INSERT INTO organization(inn, name, latitude, longitude, organization_type, work
 VALUES (7447245282, 'ООО «Грэкс»', 55.184099, 61.297289, 'LICENSED', null,
         'г. Челябинск, проспект Победы 319');
 
+INSERT INTO organization(inn, name, latitude, longitude, organization_type, work_type,
+                         address)
+VALUES (7447245282, 'ООО "Уралпротект"', 55.182336, 61.344123, 'POTENTIAL_DANGER', null,
+        'г. Челябинск, проспект Победы 319');
 
 
 ------------- Mark ---------------------
@@ -99,3 +103,7 @@ INSERT INTO mark VALUES (3, '2021-08-09 13:57:40', null, null, 55.182128, 61.340
 INSERT INTO mark VALUES (4, '2021-08-09 13:57:40', null, null, 55.182048, 61.338378, 'SOIL', null);
 
 INSERT INTO mark VALUES (5, '2021-08-09 13:57:40', null, null, 55.181368, 61.339215, 'SOIL', null);
+
+INSERT INTO mark VALUES (6, '2021-08-09 13:57:40', null, null, 55.179628, 61.344139, 'SOIL', null);
+
+INSERT INTO mark VALUES (7, '2021-08-09 13:57:40', null, null, 55.180682, 61.348860, 'AIR', null);
