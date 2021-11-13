@@ -4,6 +4,7 @@ import com.leadersofdigital.ecocontrol.entity.AccessedPolluter;
 import com.leadersofdigital.ecocontrol.repository.AccessedPolluterRepository;
 import com.leadersofdigital.ecocontrol.service.AccessedPolluterService;
 import lombok.extern.java.Log;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.ss.usermodel.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -26,6 +27,27 @@ public class CustomParser {
         this.service = service;
     }
 
+    private static Cell getCell(Row row, int column) {
+        return row.getCell(column, Row.MissingCellPolicy.CREATE_NULL_AS_BLANK);
+    }
+
+    //validator for address
+    private static String validateAddress(String address) {
+        if(address.length() < 10 || StringUtils.isNumeric(address.substring(0, 3))) {
+            return null;
+        }
+        return address.replace("\n", "");
+    }
+
+    //validator for inn
+    private static String validateInn(String inn) {
+        if(inn.indexOf('\n') != -1) {
+            return inn.substring(0, inn.indexOf('\n'));
+        }
+        return inn;
+    }
+
+    //Main method
     public void parseAll() {
         parse(FIRST_LICENSE_FILE, 6, 7, 13, 3);
         parse(SECOND_LICENSE_FILE, 2, 6, 18, 2);
@@ -41,18 +63,28 @@ public class CustomParser {
                 if (row.getRowNum() < rowSkip) {
                     continue;
                 }
-
                 AccessedPolluter license = new AccessedPolluter();
-                license.setName(row.getCell(nameColumn, Row.MissingCellPolicy.CREATE_NULL_AS_BLANK).getStringCellValue());
+
+                license.setName(getCell(row, nameColumn).getStringCellValue());
                 if (!licenseList.isEmpty() && license.getName().equals(licenseList.get(licenseList.size() - 1).getName())) {
                     continue;
                 }
-                if (row.getCell(innColumn, Row.MissingCellPolicy.CREATE_NULL_AS_BLANK).getCellType().equals(CellType.NUMERIC)) {
-                    license.setInn(String.valueOf(Math.round(row.getCell(innColumn, Row.MissingCellPolicy.CREATE_NULL_AS_BLANK).getNumericCellValue())));
+
+                Cell innCell = getCell(row, innColumn);
+                if (innCell.getCellType().equals(CellType.NUMERIC)) {
+                    license.setInn(
+                            validateInn(String.valueOf(Math.round(innCell.getNumericCellValue()))));
                 } else {
-                    license.setInn(row.getCell(innColumn, Row.MissingCellPolicy.CREATE_NULL_AS_BLANK).getStringCellValue());
+                    license.setInn(
+                            validateInn(innCell.getStringCellValue()));
                 }
-                license.setAddress(row.getCell(addressColumn, Row.MissingCellPolicy.CREATE_NULL_AS_BLANK).getStringCellValue());
+
+                license.setAddress(
+                        validateAddress(getCell(row, addressColumn).getStringCellValue()));
+
+                if(!StringUtils.isNotBlank(license.getAddress()) || !StringUtils.isNotBlank(license.getInn())) {
+                    continue;
+                }
 
                 licenseList.add(license);
             }
