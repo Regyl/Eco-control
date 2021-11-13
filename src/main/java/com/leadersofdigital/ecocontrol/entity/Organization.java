@@ -10,6 +10,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.util.Set;
+import java.util.UUID;
 
 @Entity
 @Getter
@@ -19,9 +20,9 @@ import java.util.Set;
 public class Organization {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @GeneratedValue
   @Column(name = "id", nullable = false)
-  private Long id;
+  private UUID id;
 
   @Column(nullable = false, unique = true)
   private Long inn;
