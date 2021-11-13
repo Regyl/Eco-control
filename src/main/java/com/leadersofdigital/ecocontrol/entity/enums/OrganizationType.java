@@ -1,7 +1,7 @@
 package com.leadersofdigital.ecocontrol.entity.enums;
 
 public enum OrganizationType {
-    Licensed, //Выбрасывает отходы, но платит
-    PotentialDanger, //Может выбрасывать, но ничего не платит
-    JustOrganization //Простое юр. лицо
+    LICENSED, //Выбрасывает отходы, но платит
+    POTENTIAL_DANGER, //Может выбрасывать, но ничего не платит
+    LEGAL_ORGANIZATION //Простое юр. лицо
 }
