@@ -1,7 +1,6 @@
 package com.leadersofdigital.ecocontrol.api.dto.request;
 
-import com.leadersofdigital.ecocontrol.entity.Location;
-import com.leadersofdigital.ecocontrol.entity.PollutionType;
+import com.leadersofdigital.ecocontrol.entity.enums.PollutionType;
 import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
 
