@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Tag(name = "Complaints")
+@Tag(name = "Complaints", description = "Create/read complaints from citizens")
 
 @RestController
-@RequestMapping("/mark")
+@RequestMapping("/marks")
 public class MarkController {
     private final MarkService service;
 
@@ -24,6 +24,7 @@ public class MarkController {
 
     @PostMapping("/")
     @ResponseStatus(HttpStatus.CREATED)
+    @Operation(summary = "Create new complaint")
     public MarkDtoResponse createMark(@RequestBody MarkDtoRequest request) {
         return MarkDtoResponse.of(service.create(request));
     }
