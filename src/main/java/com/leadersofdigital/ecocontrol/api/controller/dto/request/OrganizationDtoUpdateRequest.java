@@ -15,7 +15,7 @@ import java.util.UUID;
 public class OrganizationDtoUpdateRequest {
 
     @NotNull
-    private UUID id;
+    private Long id;
 
     private Long inn;
 
