@@ -5,13 +5,16 @@ import com.leadersofdigital.ecocontrol.api.controller.dto.request.OrganizationDt
 import com.leadersofdigital.ecocontrol.api.controller.dto.response.OrganizationDtoResponse;
 import com.leadersofdigital.ecocontrol.api.mapper.OrganizationMapper;
 import com.leadersofdigital.ecocontrol.entity.Organization;
+import com.leadersofdigital.ecocontrol.entity.enums.PollutionType;
 import com.leadersofdigital.ecocontrol.service.OrganizationService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -48,7 +51,8 @@ public class OrganizationController {
     @PostMapping("/")
     @Operation(summary = "Create new organization")
     @ResponseStatus(HttpStatus.CREATED)
-    public OrganizationDtoResponse create(@RequestBody OrganizationDtoCreateRequest createRequest) {
+
+    public OrganizationDtoResponse create(@RequestBody @Valid OrganizationDtoCreateRequest createRequest) {
         return mapper.toDto(
                 service.create(
                         mapper.toEntity(createRequest)));
@@ -56,9 +60,23 @@ public class OrganizationController {
 
     @PatchMapping("/")
     @Operation(summary = "Update organization data")
-    public OrganizationDtoResponse update(@RequestBody OrganizationDtoUpdateRequest updateRequest) {
+    public OrganizationDtoResponse update(@RequestBody @Valid OrganizationDtoUpdateRequest updateRequest) {
         Organization organization = service.findById(updateRequest.getId());
         mapper.toEntity(updateRequest, organization);
         return mapper.toDto(service.create(organization));
+    }
+
+    @GetMapping("/sort")
+    @Operation(summary = "Get organizations sorted by pollution type")
+    public List<OrganizationDtoResponse> findAllSorted(@RequestParam PollutionType pollutionType) {
+        return service.findAllSorted(pollutionType).stream()
+                .map(mapper::toDto)
+                .collect(Collectors.toList());
+    }
+
+    @DeleteMapping("/{id}")
+    @Operation(summary = "Delete organization")
+    public void deleteById(@PathVariable("id") Long id) {
+        service.deleteById(id);
     }
 }

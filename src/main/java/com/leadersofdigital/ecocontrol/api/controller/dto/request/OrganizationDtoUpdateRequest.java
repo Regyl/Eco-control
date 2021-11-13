@@ -5,11 +5,8 @@ import com.leadersofdigital.ecocontrol.entity.Penalty;
 import com.leadersofdigital.ecocontrol.entity.enums.OrganizationType;
 import lombok.Data;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.Set;
-import java.util.UUID;
 
 @Data
 public class OrganizationDtoUpdateRequest {
@@ -23,13 +20,11 @@ public class OrganizationDtoUpdateRequest {
 
     private Location location;
 
-    private Set<Penalty> penaltySet;
+    private Set<PenaltyDtoRequest> penalty;
 
     private OrganizationType organizationType;
 
-    private String okved;
-
-    private String workType;
+    private Set<OkvedDtoRequest> okveds;
 
     private String address;
 }

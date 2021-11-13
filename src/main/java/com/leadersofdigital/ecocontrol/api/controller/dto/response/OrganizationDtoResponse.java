@@ -1,18 +1,18 @@
 package com.leadersofdigital.ecocontrol.api.controller.dto.response;
 
 import com.leadersofdigital.ecocontrol.entity.Location;
-import com.leadersofdigital.ecocontrol.entity.Organization;
+import com.leadersofdigital.ecocontrol.entity.Okved;
 import com.leadersofdigital.ecocontrol.entity.Penalty;
 import com.leadersofdigital.ecocontrol.entity.enums.OrganizationType;
+import com.leadersofdigital.ecocontrol.entity.enums.PollutionType;
 import lombok.Data;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 @Data
 public class OrganizationDtoResponse {
+
+    private Long id;
 
     private Long inn;
 
@@ -20,13 +20,15 @@ public class OrganizationDtoResponse {
 
     private Location location;
 
-    private Set<Penalty> penaltySet;
+    private Set<Penalty> penalty;
 
     private OrganizationType organizationType;
 
-    private String okved;
+    private Set<Okved> okveds;
 
-    private String workType;
+    private Boolean isOkvedDanger;
 
     private String address;
+
+    private PollutionType pollutionType;
 }

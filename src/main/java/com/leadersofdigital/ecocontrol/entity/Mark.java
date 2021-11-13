@@ -1,9 +1,5 @@
 package com.leadersofdigital.ecocontrol.entity;
 
-import java.io.Serializable;
-import java.time.LocalDateTime;
-import javax.persistence.*;
-
 import com.leadersofdigital.ecocontrol.api.controller.dto.request.MarkDtoRequest;
 import com.leadersofdigital.ecocontrol.entity.enums.PollutionType;
 import lombok.AllArgsConstructor;
@@ -11,6 +7,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.extern.java.Log;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Entity
 @Getter
@@ -23,9 +25,9 @@ public class Mark implements Serializable {
   private static final long serialVersionUID = 4099836772284228713L;
 
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @GeneratedValue
   @Column(name = "id", nullable = false)
-  private Long id;
+  private UUID id;
 
   @Column(nullable = false)
   private Location location;
@@ -38,6 +40,7 @@ public class Mark implements Serializable {
   @Lob
   private byte[] img;
 
+  @NotNull
   @Enumerated(EnumType.STRING)
   private PollutionType pollutionType;
 

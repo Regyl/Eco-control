@@ -16,7 +16,9 @@ public class OrganizationMapper {
     }
 
     public Organization toEntity(OrganizationDtoCreateRequest request) {
-        return mapper.map(request, Organization.class);
+        Organization organization = mapper.map(request, Organization.class);
+        organization.setIsOkvedDanger(false);
+        return organization;
     }
 
     public void toEntity(OrganizationDtoUpdateRequest request, Organization organization) {
