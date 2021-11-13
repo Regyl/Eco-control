@@ -13,6 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class OrganizationService {
@@ -38,7 +39,7 @@ public class OrganizationService {
         return repository.findAll(pageable);
     }
 
-    public Organization findById(Long id) {
+    public Organization findById(UUID id) {
         return repository.findById(id)
                 .orElseThrow(EntityNotFoundException::new);
     }
@@ -51,7 +52,7 @@ public class OrganizationService {
         return repository.findAllByPollutionType(pollutionType);
     }
 
-    public void deleteById(Long id) {
+    public void deleteById(UUID id) {
         try {
             repository.deleteById(id);
         } catch (EmptyResultDataAccessException e) {

@@ -8,11 +8,12 @@ import com.leadersofdigital.ecocontrol.entity.enums.PollutionType;
 import lombok.Data;
 
 import java.util.Set;
+import java.util.UUID;
 
 @Data
 public class OrganizationDtoResponse {
 
-    private Long id;
+    private UUID id;
 
     private Long inn;
 

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Tag(name = "Organizations", description = "Create/read/update organizations")
@@ -94,7 +95,7 @@ public class OrganizationController {
 
     @DeleteMapping("/{id}")
     @Operation(summary = "Delete organization")
-    public void deleteById(@PathVariable("id") Long id) {
+    public void deleteById(@PathVariable("id") UUID id) {
         service.deleteById(id);
     }
 }
