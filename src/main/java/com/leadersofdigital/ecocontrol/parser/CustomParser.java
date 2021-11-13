@@ -1,12 +1,9 @@
 package com.leadersofdigital.ecocontrol.parser;
 
-import com.leadersofdigital.ecocontrol.entity.AccessedPolluter;
-import com.leadersofdigital.ecocontrol.repository.AccessedPolluterRepository;
-import com.leadersofdigital.ecocontrol.service.AccessedPolluterService;
+import com.leadersofdigital.ecocontrol.entity.Organization;
 import lombok.extern.java.Log;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.ss.usermodel.*;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.*;
@@ -20,12 +17,6 @@ public class CustomParser {
     private static final String SECOND_LICENSE_FILE = "src/main/resources/data/Реестр лицензий на обращение с отходами 1.xls";
     private static final String THIRD_LICENSE_FILE = "src/main/resources/data/Реестр лицензий на обращение с отходами 2.xls";
     private static final String FOUR_LICENSE_FILE = "src/main/resources/data/Реестр разрешений на выбросы загрязняющих веществ -Минэкология.xlsx";
-
-    private final AccessedPolluterService service;
-
-    public CustomParser(AccessedPolluterService service) {
-        this.service = service;
-    }
 
     private static Cell getCell(Row row, int column) {
         return row.getCell(column, Row.MissingCellPolicy.CREATE_NULL_AS_BLANK);
@@ -58,12 +49,12 @@ public class CustomParser {
     private void parse(String filename, int nameColumn, int innColumn, int addressColumn, int rowSkip) {
         try (Workbook wb = WorkbookFactory.create(new FileInputStream(filename))) {
             Sheet sheet = wb.getSheetAt(0);
-            List<AccessedPolluter> licenseList = new ArrayList<>();
+            List<Organization> licenseList = new ArrayList<>();
             for (Row row : sheet) {
                 if (row.getRowNum() < rowSkip) {
                     continue;
                 }
-                AccessedPolluter license = new AccessedPolluter();
+                Organization license = new Organization();
 
                 license.setName(getCell(row, nameColumn).getStringCellValue());
                 if (!licenseList.isEmpty() && license.getName().equals(licenseList.get(licenseList.size() - 1).getName())) {
@@ -72,23 +63,23 @@ public class CustomParser {
 
                 Cell innCell = getCell(row, innColumn);
                 if (innCell.getCellType().equals(CellType.NUMERIC)) {
-                    license.setInn(
-                            validateInn(String.valueOf(Math.round(innCell.getNumericCellValue()))));
+                    license.setInn(Long.valueOf(
+                            validateInn(String.valueOf(Math.round(innCell.getNumericCellValue())))));
                 } else {
-                    license.setInn(
-                            validateInn(innCell.getStringCellValue()));
+                    license.setInn(Long.valueOf(
+                            validateInn(innCell.getStringCellValue())));
                 }
 
                 license.setAddress(
                         validateAddress(getCell(row, addressColumn).getStringCellValue()));
 
-                if(!StringUtils.isNotBlank(license.getAddress()) || !StringUtils.isNotBlank(license.getInn())) {
+                if(!StringUtils.isNotBlank(license.getAddress())) {
                     continue;
                 }
 
                 licenseList.add(license);
             }
-            service.saveAll(licenseList);
+//            service.saveAll(licenseList);
         } catch (IOException e) {
             log.warning(e.getMessage());
         }

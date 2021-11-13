@@ -2,7 +2,7 @@ package com.leadersofdigital.ecocontrol.api.dto.response;
 
 import com.leadersofdigital.ecocontrol.entity.Location;
 import com.leadersofdigital.ecocontrol.entity.Mark;
-import com.leadersofdigital.ecocontrol.entity.PollutionType;
+import com.leadersofdigital.ecocontrol.entity.enums.PollutionType;
 import lombok.Data;
 
 import java.time.LocalDateTime;

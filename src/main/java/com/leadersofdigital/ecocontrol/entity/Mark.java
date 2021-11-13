@@ -1,11 +1,11 @@
 package com.leadersofdigital.ecocontrol.entity;
 
-import java.io.IOException;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import javax.persistence.*;
 
 import com.leadersofdigital.ecocontrol.api.dto.request.MarkDtoRequest;
+import com.leadersofdigital.ecocontrol.entity.enums.PollutionType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
