@@ -39,6 +39,7 @@ public class OrganizationController {
     public List<OrganizationDtoResponse> findAllWithPenalty() {
         return service.findAllWithPenalty().stream()
                 .map(mapper::toDto)
+                .distinct()
                 .collect(Collectors.toList());
     }
 
