@@ -14,14 +14,4 @@ public class MarkDtoResponse {
     private PollutionType pollutionType;
     private String description;
     private LocalDateTime createdAt;
-
-
-    public static MarkDtoResponse of(Mark mark) {
-        MarkDtoResponse dto = new MarkDtoResponse();
-        dto.location= mark.getLocation();
-        dto.pollutionType=mark.getPollutionType();
-        dto.description= mark.getDescription();
-        dto.createdAt=mark.getCreatedAt();
-        return dto;
-    }
 }
