@@ -32,8 +32,15 @@
 
 
 ## Установка
+Backend:
 
-    idk
+    docker run regyl/eco-control
+Далее нужно перейти в папку с файлом docker-compose.yml
+
+    docker-compose up
+
+
+Frontend:
 
 
 #### Команда:

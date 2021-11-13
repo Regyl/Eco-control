@@ -98,16 +98,17 @@
                 </configuration>
             </plugin>
 
+<!--            deploy to dockerhub-->
             <plugin>
                 <groupId>com.google.cloud.tools</groupId>
                 <artifactId>jib-maven-plugin</artifactId>
                 <version>${jib-maven-plugin.version}</version>
                 <configuration>
                     <to>
-                        <image>registry.hub.docker.com/*/*</image>
+                        <image>registry.hub.docker.com/regyl/eco-control</image>
                         <auth>
-                            <username></username>
-                            <password></password>
+                            <username>${env.DOCKERHUBLOGIN}</username>
+                            <password>${env.DOCKERHUBPASSWORD}</password>
                         </auth>
                     </to>
                 </configuration>
