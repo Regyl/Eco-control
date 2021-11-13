@@ -13,7 +13,7 @@ public class MarkDtoRequest {
     private Double latitude;
     @NotNull
     private Double longitude;
-    @NotNull
+
     private MultipartFile image;
 
     private String description;
