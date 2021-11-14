@@ -44,7 +44,7 @@ public class OrganizationController {
     }
 
     @GetMapping("/okveds")
-    @Operation(summary = "")
+    @Operation(summary = "Organizations with dangerous okved's")
     public List<OrganizationDtoResponse> findAllOkved() {
         return service.findByOkveds().stream()
                 .map(mapper::toDto)
@@ -53,7 +53,7 @@ public class OrganizationController {
     }
 
     @GetMapping("/penalty")
-    @Operation(summary = "")
+    @Operation(summary = "Organizations with penalty")
     public List<OrganizationDtoResponse> findAllWithPenalty() {
         return service.findAllWithPenalty().stream()
                 .map(mapper::toDto)
