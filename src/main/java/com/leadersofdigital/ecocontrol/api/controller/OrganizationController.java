@@ -5,6 +5,7 @@ import com.leadersofdigital.ecocontrol.api.controller.dto.request.OrganizationDt
 import com.leadersofdigital.ecocontrol.api.controller.dto.response.OrganizationDtoResponse;
 import com.leadersofdigital.ecocontrol.api.mapper.OrganizationMapper;
 import com.leadersofdigital.ecocontrol.entity.Organization;
+import com.leadersofdigital.ecocontrol.entity.enums.OrganizationType;
 import com.leadersofdigital.ecocontrol.entity.enums.PollutionType;
 import com.leadersofdigital.ecocontrol.exception.InvalidRequestException;
 import com.leadersofdigital.ecocontrol.service.OrganizationService;
@@ -32,6 +33,23 @@ public class OrganizationController {
     public OrganizationController(OrganizationService service, OrganizationMapper mapper) {
         this.service = service;
         this.mapper = mapper;
+    }
+
+    @GetMapping("/type")
+    @Operation(summary = "Find all sorted by organization type")
+    public List<OrganizationDtoResponse> findByOrgType(@RequestParam OrganizationType organizationType) {
+        return service.findByOrgType(organizationType).stream()
+                .map(mapper::toDto)
+                .collect(Collectors.toList());
+    }
+
+    @GetMapping("/okveds")
+    @Operation(summary = "")
+    public List<OrganizationDtoResponse> findAllOkved() {
+        return service.findByOkveds().stream()
+                .map(mapper::toDto)
+                .distinct()
+                .collect(Collectors.toList());
     }
 
     @GetMapping("/penalty")

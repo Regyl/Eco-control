@@ -2,6 +2,7 @@ package com.leadersofdigital.ecocontrol.repository;
 
 import com.leadersofdigital.ecocontrol.entity.Organization;
 import com.leadersofdigital.ecocontrol.entity.Penalty;
+import com.leadersofdigital.ecocontrol.entity.enums.OrganizationType;
 import com.leadersofdigital.ecocontrol.entity.enums.PollutionType;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -23,4 +24,8 @@ public interface OrganizationRepository extends JpaRepository<Organization, UUID
     Optional<Organization> findByPenalty(Penalty penalty);
 
     List<Organization> findAllByPenaltyIsNotNull();
+
+    List<Organization> findAllByOrganizationType(OrganizationType organizationType);
+
+    List<Organization> findAllByOkvedsIsNotNullAndOrganizationType(OrganizationType organizationType);
 }

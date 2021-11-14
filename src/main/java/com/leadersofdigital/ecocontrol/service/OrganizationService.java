@@ -2,6 +2,7 @@ package com.leadersofdigital.ecocontrol.service;
 
 import com.leadersofdigital.ecocontrol.entity.Organization;
 import com.leadersofdigital.ecocontrol.entity.Penalty;
+import com.leadersofdigital.ecocontrol.entity.enums.OrganizationType;
 import com.leadersofdigital.ecocontrol.entity.enums.PollutionType;
 import com.leadersofdigital.ecocontrol.exception.EntityNotFoundException;
 import com.leadersofdigital.ecocontrol.repository.OkvedRepository;
@@ -79,5 +80,13 @@ public class OrganizationService {
                 .orElseThrow(EntityNotFoundException::new);
         return repository.findByPenalty(penalty)
                 .orElseThrow(EntityNotFoundException::new);
+    }
+
+    public List<Organization> findByOrgType(OrganizationType organizationType) {
+        return repository.findAllByOrganizationType(organizationType);
+    }
+
+    public List<Organization> findByOkveds() {
+        return repository.findAllByOkvedsIsNotNullAndOrganizationType(OrganizationType.POTENTIAL_DANGER);
     }
 }
