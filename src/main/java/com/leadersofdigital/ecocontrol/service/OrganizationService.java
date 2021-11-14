@@ -80,8 +80,4 @@ public class OrganizationService {
         return repository.findByPenalty(penalty)
                 .orElseThrow(EntityNotFoundException::new);
     }
-
-    public void checkOkvedSafety(Organization organization) {
-        //TODO:
-    }
 }
